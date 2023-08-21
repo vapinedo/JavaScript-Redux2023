@@ -1,4 +1,5 @@
 const redux = require("redux");
+const reduxLogger = require("redux-logger");
  
 const CAKE_ORDER = "CAKE_ORDER";
 const CAKE_RESTOCK = "CAKE_RESTOCK";
@@ -78,10 +79,14 @@ const rootReducer = redux.combineReducers({
     iceCream: iceCreamReducer 
 });
 
-const store = redux.createStore(rootReducer);
+const store = redux.createStore(
+    rootReducer, 
+    redux.applyMiddleware(reduxLogger.createLogger())
+);
+
 console.log("Initial State", store.getState());
 
-const unsubscribe = store.subscribe(() => console.log("Updated state", store.getState()));
+const unsubscribe = store.subscribe(() => {});
 // store.dispatch(orderCake());
 // store.dispatch(orderCake());
 // store.dispatch(orderCake());
