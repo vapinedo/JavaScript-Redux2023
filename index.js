@@ -36,7 +36,7 @@ const restockIceCream = (quantity = 1) => {
 // };
 
 const initialCakeState = {
-    numberOfIceCreams: 10
+    numberOfCakes: 10
 };
 const initialIcreCreamState = {
     numberOfIceCreams: 20
@@ -73,7 +73,12 @@ const iceCreamReducer = (state = initialIcreCreamState, action) => {
     }
 };
 
-const store = redux.createStore(reducer);
+const rootReducer = redux.combineReducers({ 
+    cake: cakeReducer, 
+    iceCream: iceCreamReducer 
+});
+
+const store = redux.createStore(rootReducer);
 console.log("Initial State", store.getState());
 
 const unsubscribe = store.subscribe(() => console.log("Updated state", store.getState()));
