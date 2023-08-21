@@ -40,10 +40,19 @@ const store = redux.createStore(reducer);
 console.log("Initial State", store.getState());
 
 const unsubscribe = store.subscribe(() => console.log("Updated state", store.getState()));
-store.dispatch(orderCake());
-store.dispatch(orderCake());
-store.dispatch(orderCake());
+// store.dispatch(orderCake());
+// store.dispatch(orderCake());
+// store.dispatch(orderCake());
+// store.dispatch(restockCake(3));
 
-store.dispatch(restockCake(3));
+const actionCreators = {
+    orderCake,
+    restockCake
+};
+const actions = redux.bindActionCreators(actionCreators, store.dispatch);
+actions.orderCake();
+actions.orderCake();
+actions.orderCake();
+actions.restockCake(3);
 
 unsubscribe();
