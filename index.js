@@ -86,7 +86,7 @@ const store = redux.createStore(
 
 console.log("Initial State", store.getState());
 
-const unsubscribe = store.subscribe(() => {});
+const unsubscribe = store.subscribe(() => { });
 // store.dispatch(orderCake());
 // store.dispatch(orderCake());
 // store.dispatch(orderCake());
